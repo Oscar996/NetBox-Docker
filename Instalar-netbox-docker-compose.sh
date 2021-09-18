@@ -53,6 +53,17 @@ docker-compose up -d
 docker update --restart always netbox-docker_netbox_1 netbox-docker_postgres_1 netbox-docker_redis-cache_1 netbox-docker_netbox-worker_1 netbox-docker_redis_1
 
 
+#Navegacao de diretorios
+cd ..
+cd projects/netbox-docker/env
+
+#Ajuste de parametros
+echo LOGIN_REQUIRED=True
+echo LOGIN_TIMEOUT=86400
+
+
+
+
 #Mensagem personalizada
 echo Acessar o IP da máquina com a porta 8000
 echo Username: admin
