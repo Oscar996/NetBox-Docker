@@ -8,7 +8,8 @@ sudo apt-get install -y \
    curl -y \
    gnupg -y \
    lsb-release -y \
-   git -y
+   git -y \
+   docker-compose -y
 
 #Chave Docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
