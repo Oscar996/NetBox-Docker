@@ -49,9 +49,14 @@ docker-compose pull
 #Subir os containers
 docker-compose up -d
 
-#Mensagem personalizada
+#Rotina de inicialização dos containers junto ao sistema
+docker update --restart always netbox-docker_netbox_1 netbox-docker_postgres_1 netbox-docker_redis-cache_1 netbox-docker_netbox-worker_1 netbox-docker_redis_1
 
+
+#Mensagem personalizada
 echo Acessar o IP da máquina com a porta 8000
 echo Username: admin
 echo Password: admin
 echo Enjoy!!!
+
+
