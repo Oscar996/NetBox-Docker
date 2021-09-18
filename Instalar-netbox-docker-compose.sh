@@ -22,9 +22,6 @@ echo \
 sudo apt-get update -y
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 
-#Sobe um nível no sistema de diretórios.
-cd ..
-
 #Instalar Docker Compose
 curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
@@ -54,7 +51,7 @@ docker update --restart always netbox-docker_netbox_1 netbox-docker_postgres_1 n
 
 #Alteração de parametros de configuracao
 #sed -e "s/^LOGIN_REQUIRED = environ.get('LOGIN_REQUIRED', 'False').lower() == 'true' .*/LOGIN_REQUIRED = True/g" \
-#-e "s/^'LOGIN_TIMEOUT = int(environ.get('LOGIN_TIMEOUT', 1209600)) .*/LOGIN_TIMEOUT', 86400/g" \
+#-e "s/^'LOGIN_TIMEOUT = int(environ.get('LOGIN_TIMEOUT', 1209600)) .*/LOGIN_TIMEOUT, 86400/g" \
 #-e "s/^TIME_ZONE = environ.get('TIME_ZONE', 'UTC') .*/TIME_ZONE = 'America/Manaus'/g" \
 #-e "s/^DATE_FORMAT = environ.get('DATE_FORMAT', 'N j, Y') .*/DATE_FORMAT = 'j N, Y'/g" \
 #-e "s/^SHORT_DATE_FORMAT = environ.get('SHORT_DATE_FORMAT', 'Y-m-d') .*/SHORT_DATE_FORMAT = 'd/m/Y'/g" \
