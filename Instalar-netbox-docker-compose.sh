@@ -53,13 +53,17 @@ docker-compose up -d
 docker update --restart always netbox-docker_netbox_1 netbox-docker_postgres_1 netbox-docker_redis-cache_1 netbox-docker_netbox-worker_1 netbox-docker_redis_1
 
 
-#Navegacao de diretorios
+#Alteração de parametros de configuracao
+sed -e 's/^LOGIN_REQUIRED = environ.get('LOGIN_REQUIRED', 'False').lower() == 'true' .*/LOGIN_REQUIRED = True/g' \
+-e 's/^'LOGIN_TIMEOUT = int(environ.get('LOGIN_TIMEOUT', 1209600)) .*/LOGIN_TIMEOUT', 86400/g \
+-e "s/^TIME_ZONE = environ.get('TIME_ZONE', 'UTC') .*/TIME_ZONE = 'America/Manaus'/g" \
+-e "s/^DATE_FORMAT = environ.get('DATE_FORMAT', 'N j, Y') .*/DATE_FORMAT = 'j N, Y'/g" \
+-e "s/^SHORT_DATE_FORMAT = environ.get('SHORT_DATE_FORMAT', 'Y-m-d') .*/SHORT_DATE_FORMAT = 'd/m/Y'/g" \
+-e "s/^TIME_FORMAT = environ.get('TIME_FORMAT', 'g:i a') .*/TIME_FORMAT = 'H:i'/g" \
+-e "s/^DATETIME_FORMAT = environ.get('DATETIME_FORMAT', 'N j, Y g:i a') .*/DATETIME_FORMAT = 'H:i - j/N/Y'/g" \
+-e "s/^SHORT_DATETIME_FORMAT = environ.get('SHORT_DATETIME_FORMAT', 'Y-m-d H:i') .*/SHORT_DATETIME_FORMAT = 'd-m-Y H:i'/g" \
+-i /root/projects/netbox-docker/configuration/configuration.py
 
-cd /root/projects/netbox-docker/env/
-
-#Ajuste de parametros
-echo  LOGIN_REQUIRED=True >> netbox.env
-echo  LOGIN_TIMEOUT=86400 >> netbox.env
 
 
 #Mensagem personalizada
