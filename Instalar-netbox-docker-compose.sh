@@ -42,7 +42,12 @@ EOF
 #Subir os conteiners 
 echo Enjoy!!!
 
+#Entrar no diretório
+cd netbox-docker/
+
+#Baixar os containers
 docker-compose pull
+#Subir os containers
 docker-compose up
 
 #Mensagem personalizada
