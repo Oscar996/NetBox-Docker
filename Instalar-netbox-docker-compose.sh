@@ -10,8 +10,7 @@ sudo apt-get install -y \
    lsb-release -y \
    git -y \
 
-#Sobe um nível no sistema de diretórios.
-cd ..
+
 
 #Chave Docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
@@ -22,6 +21,9 @@ echo \
 #Instalar Docker
 sudo apt-get update -y
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
+
+#Sobe um nível no sistema de diretórios.
+cd ..
 
 #Instalar Docker Compose
 curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
