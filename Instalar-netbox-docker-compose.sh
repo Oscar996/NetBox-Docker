@@ -9,7 +9,9 @@ sudo apt-get install -y \
    gnupg -y \
    lsb-release -y \
    git -y \
-   docker-compose -y
+
+#Sobe um nível no sistema de diretórios.
+cd ..
 
 #Chave Docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
