@@ -40,20 +40,14 @@ services:
       - 8000:8080
 EOF
 
-#Subir os conteiners 
-echo Enjoy!!!
-
-#Entrar no diretório
-cd netbox-docker/
-
 #Baixar os containers
 docker-compose pull
 #Subir os containers
 docker-compose up
 
 #Mensagem personalizada
+
 echo Acessar o IP da máquina com a porta 8001
 echo Username: admin
 echo Password: admin
-
-
+echo Enjoy!!!
