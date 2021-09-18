@@ -54,7 +54,8 @@ docker update --restart always netbox-docker_netbox_1 netbox-docker_postgres_1 n
 
 
 #Navegacao de diretorios
-cd .. && cd projects/netbox-docker/env
+cd .. 
+cd projects/netbox-docker/env/
 
 #Ajuste de parametros
 echo  LOGIN_REQUIRED=True >> netbox.env
