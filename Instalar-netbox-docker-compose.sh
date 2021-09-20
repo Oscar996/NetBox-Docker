@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#Navegar acima
+cd /root/
+
 #Atualizar e instalar os pacotes necessários
 sudo apt-get update -y
 sudo apt-get install -y \
