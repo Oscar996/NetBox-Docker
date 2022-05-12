@@ -7,5 +7,5 @@ git clone https://github.com/Oscar996/Script-Docker_Compose-NetBox.git && cd Scr
 
 
 
-Adicções fururas:
+Adicções futuras:
 https://github.com/minitriga/Netbox-Device-Type-Library-Import
