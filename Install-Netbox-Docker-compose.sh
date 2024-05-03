@@ -1,10 +1,8 @@
 #!/bin/bash
 
-#Navegar acima
-cd /root/
-
 #Atualizar e instalar os pacotes necessários
-sudo apt-get update -y
+sudo apt update -y
+sudo apt upgrade -y
 sudo apt-get install -y \
    apt-transport-https -y \
    ca-certificates -y \
@@ -12,19 +10,15 @@ sudo apt-get install -y \
    gnupg -y \
    lsb-release -y \
    git -y \
+   docker -y \
+   docker-compose -y \
 
-
-#Instalar Docker
-sudo apt-get update -y
-sudo apt-get install docker-ce docker-ce-cli containerd.io -y
-
-#Instalar Docker Compose
-curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
-docker-compose --version
+#Validação da instalação do docker
+sudo docker --version
+sudo docker-compose --version
 
 #Instalar NetBox
-mkdir -p ~/projects && cd projects
+mkdir -p ~/projects && cd ~/projects
 git clone -b release https://github.com/netbox-community/netbox-docker.git
 cd netbox-docker
 
@@ -44,9 +38,12 @@ docker-compose up -d
 
 #Rotina de inicialização dos containers junto ao sistema
 docker update --restart always netbox-docker_netbox_1 netbox-docker_postgres_1 netbox-docker_redis-cache_1 netbox-docker_netbox-worker_1 netbox-docker_redis_1
-                           
+
+#Criar usuário
+docker-compose exec netbox /opt/netbox/netbox/manage.py createsuperuser                           
+
 #Mensagem personalizada
 echo Acessar o IP da máquina com a porta 8000
 echo Username: admin
-echo Password: admin
+echo Password: Definido anteriormente
 echo Enjoy!!!
