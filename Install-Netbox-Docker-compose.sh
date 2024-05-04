@@ -42,8 +42,15 @@ docker update --restart always netbox-docker_netbox_1 netbox-docker_postgres_1 n
 #Criar usuário
 docker-compose exec netbox /opt/netbox/netbox/manage.py createsuperuser                           
 
+#Baixar conteiner com os Device type lib
+docker pull ghcr.io/minitriga/netbox-device-type-library-import
+
 #Mensagem personalizada
 echo Acessar o IP da máquina com a porta 8000
 echo Username: admin
 echo Password: Definido anteriormente
 echo Enjoy!!!
+
+echo "Executar o seguinte comando substituindo a URL e o API Token"
+echo "docker run -e "NETBOX_URL=http://netbox:8000/" -e "NETBOX_TOKEN=98765434567890" ghcr.io/minitriga/netbox-device-type-library-import"
+
