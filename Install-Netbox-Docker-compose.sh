@@ -1,21 +1,39 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #Atualizar e instalar os pacotes necessários
-sudo apt update -y
-sudo apt upgrade -y
-sudo apt-get install -y \
+ apt update -y
+ apt upgrade -y
+
+# Add Docker's official GPG key:
+ apt-get install ca-certificates curl
+ install -m 0755 -d /etc/apt/keyrings
+ curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+ chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+   tee /etc/apt/sources.list.d/docker.list > /dev/null
+ apt-get update
+
+ apt-get install -y \
    apt-transport-https -y \
    ca-certificates -y \
+   containerd.io -y \
    curl -y \
+   docker-buildx-plugin -y \
+   docker-ce -y \
+   docker-ce-cli -y \
+   docker-compose-plugin -y \
+   git -y \
    gnupg -y \
    lsb-release -y \
-   git -y \
-   docker -y \
-   docker-compose -y \
+
 
 #Validação da instalação do docker
-sudo docker --version
-sudo docker-compose --version
+ docker --version
+ docker run hello-world
 
 #Instalar NetBox
 mkdir -p ~/projects && cd ~/projects
@@ -24,7 +42,6 @@ cd netbox-docker
 
 #Criar o composer override yml definindo versão e porta de acesso
 tee docker-compose.override.yml <<EOF
-version: '3.4'
 services:
   netbox:
     ports:
