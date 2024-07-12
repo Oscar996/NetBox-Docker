@@ -49,15 +49,15 @@ services:
 EOF
 
 #Baixar os containers
-docker-compose pull
+docker compose pull
 #Subir os containers
-docker-compose up -d
+docker compose up -d
 
 #Rotina de inicialização dos containers junto ao sistema
 docker update --restart always netbox-docker_netbox_1 netbox-docker_postgres_1 netbox-docker_redis-cache_1 netbox-docker_netbox-worker_1 netbox-docker_redis_1
 
 #Criar usuário
-docker-compose exec netbox /opt/netbox/netbox/manage.py createsuperuser                           
+docker compose exec netbox /opt/netbox/netbox/manage.py createsuperuser                           
 
 #Baixar conteiner com os Device type lib
 docker pull ghcr.io/minitriga/netbox-device-type-library-import
