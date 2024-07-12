@@ -54,7 +54,7 @@ docker compose pull
 docker compose up -d
 
 #Rotina de inicialização dos containers junto ao sistema
-docker update --restart always netbox-docker_netbox_1 netbox-docker_postgres_1 netbox-docker_redis-cache_1 netbox-docker_netbox-worker_1 netbox-docker_redis_1
+docker update --restart always netbox-docker-netbox_1 netbox-docker-postgres_1 netbox-docker-redis-cache_1 netbox-docker-netbox-worker_1 netbox-docker-redis_1
 
 #Criar usuário
 docker compose exec netbox /opt/netbox/netbox/manage.py createsuperuser                           
